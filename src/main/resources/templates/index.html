@@ -4,14 +4,22 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Empleos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
         <p>hola mundo</p>
+        <p th:text="${mensaje}"></p>
+        <div>Hoy es [[${fecha}]]</div>
+        
+        <h1>BIenvenido</h1>
+        <h2>Oferta de trabajo</h2>
+        <h3 th:text="'Titulo:' + ${nombre}"></h3>
+        <h3 th:text="'Fecha:' + ${fechaPub}"></h3>
+        <h3 th:text="'Salario:' + ${salario}"></h3>
+        <h3 th:text="'Vigente:' + ${vigente}"></h3>
     </body>
 </html>
