@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listado de vacantes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Lista de vacantes</h1>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descrpcion</th>
+                <th>Fecha</th>
+                <th>Salario</th>
+            </tr>
+            <!-- repito pa superdotados como tu etiqueta th:each se utiliza para 
+            pa elementos que se repite, es decir cada fila corresponde a cada id, por otro 
+            lado a cada element de la fila hay que dar el contenido!!! -->
+            <tr th:each="vacante :${vacantes}">
+                <td th:text="${vacante.id}"></td>
+                <td th:text="${vacante.nombre}"></td>
+                <td th:text="${vacante.descripcion}"></td>
+                <td th:text="${vacante.fecha}"></td>
+                <td th:text="${vacante.salario}"></td>
+            </tr>
+        </table>
+    </body>
+</html>
