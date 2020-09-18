@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>vacantes disponibles</h1>
+        <ol>
+            <!--se duplica lista  y tag li , por lo tanto th:each va ahi-->
+            <!-- por otro lado se necesita añadir el tag th:text="${},ya qie la primera parte
+            corresponde a numeracion de items de la lista y la segunda al contenido-->
+            <li th:each="temporal:${empleos}" th:text="${temporal}"></li>
+        </ol>
+    </body>
+</html>
