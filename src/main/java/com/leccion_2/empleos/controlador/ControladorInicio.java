@@ -5,6 +5,7 @@
  */
 package com.leccion_2.empleos.controlador;
 
+import com.leccion_2.empleos.modelos.Vacante;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +20,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorInicio {
     
-    @GetMapping("listado")
+    @GetMapping("/detalle")
+    public String mostrarDetalle(Model model){
+        Vacante vacante =new Vacante();
+        vacante.setNombre("Ingeniero de comunicaciones");
+        vacante.setDescripcion("Se necesita un ingeniero para dar soporte a intranet");
+        vacante.setFecha(new Date());
+        vacante.setSalario(9700.0);  
+        model.addAttribute("vacante", vacante);
+        return "detalle";
+    }
+    
+    @GetMapping("/listado")
     public String mostrarLista(Model model){
         List<String> lista= new LinkedList<String>();
         lista.add("Ingeniero de sistemas");
