@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author igorr
  */
 @Controller
+//@RequestMapping(value="/categoria")
 public class CategoriasController {
     //@GetMapping("/home")
     @RequestMapping(value="/home", method=RequestMethod.GET)
