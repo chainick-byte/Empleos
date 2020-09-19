@@ -19,7 +19,9 @@ public class Vacante {
     private Date fecha;
     private Double salario;
     private int destacado;
-    private String imagen="no-image.png";
+    //al definir la variable imagen aqui , lo que sucedera es que al no tener imagenes se 
+    //imprimira esa por defecto la que esta definida aqui
+    private String imagen="nologo.png";
 
     
     // al tener todos los metodos de getter y setter de todas las variables , la clase Vacante
