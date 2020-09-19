@@ -25,6 +25,7 @@ and open the template in the editor.
                 <th>Salario</th>
                 <th>Destacado</th>
                 <th>Destacado</th>
+                <th>Detalle</th>
             </tr>
             <!-- repito pa superdotados como tu etiqueta th:each se utiliza para 
             pa elementos que se repite, es decir cada fila corresponde a cada id, por otro 
@@ -52,6 +53,11 @@ and open the template in the editor.
                 <td>
                     <span th:if="${vacante.destacado==1}" class="badge badge-primary">Si</span>
                     <span th:unless="${vacante.destacado==1}" class="badge badge-danger">Si</span>
+                </td>
+                <td>
+                    <!-- aqui lo que pasa es que relacionamos nuesta linkedlist con vista de path
+                    variable por lo que ya tenemos enlace para vista detallada de la empresa-->
+                    <a th:href="@{/vacantes/view/{id}(id=${vacante.id})}" class="btn btn-success">ver detalle</a>
                 </td>
             </tr>
         </table>
