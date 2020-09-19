@@ -18,6 +18,7 @@ public class Vacante {
     private String descripcion;
     private Date fecha;
     private Double salario;
+    private int destacado;
 
     
     // al tener todos los metodos de getter y setter de todas las variables , la clase Vacante
@@ -63,6 +64,15 @@ public class Vacante {
     public Double getSalario() {
         return salario;
     }
+
+    public void setDestacado(int destacado) {
+        this.destacado = destacado;
+    }
+
+    public int getDestacado() {
+        return destacado;
+    }
+    
 
     @Override
     public String toString() {

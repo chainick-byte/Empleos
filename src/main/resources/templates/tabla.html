@@ -21,6 +21,8 @@ and open the template in the editor.
                 <th>Descrpcion</th>
                 <th>Fecha</th>
                 <th>Salario</th>
+                <th>Destacado</th>
+                <th>Destacado</th>
             </tr>
             <!-- repito pa superdotados como tu etiqueta th:each se utiliza para 
             pa elementos que se repite, es decir cada fila corresponde a cada id, por otro 
@@ -31,6 +33,18 @@ and open the template in the editor.
                 <td th:text="${vacante.descripcion}"></td>
                 <td th:text="${vacante.fecha}"></td>
                 <td th:text="${vacante.salario}"></td>
+                <!--aqui utilizo la primera condicional "Elvis"
+                <td th:text="${vacante.destacado}"></td>
+                se lee basicamente:" si la variable destacado del objeto vacante es uno 
+                entonces impreimes si y por lo contrario no-->
+                <td th:text="${vacante.destacado==1}?'si':'no'"></td>
+                <!--Por otro lado probamos condicional de if/unless,el ejercicio consiste ,
+                si se trata de un "si" el rectangulo que rodea este si tiene que ser azul 
+                y contrario si es un "no" rojo-->
+                <td>
+                    <span th:if="${vacante.destacado==1}" class="badge badge-primary">Si</span>
+                    <span th:unless="${vacante.destacado==1}" class="badge badge-danger">Si</span>
+                </td>
             </tr>
         </table>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
