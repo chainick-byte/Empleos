@@ -51,6 +51,7 @@ public class ControladorInicio {
         vacante1.setFecha(sdf.parse("08-02-2020"));
         vacante1.setSalario(15000.0);
         vacante1.setDestacado(1);
+        vacante1.setImagen("wrench.png");
         //creo segunda oferta de trabajo 
         Vacante vacante2 =new Vacante();
         vacante2.setId(2);
@@ -59,6 +60,7 @@ public class ControladorInicio {
         vacante2.setFecha(sdf.parse("04-10-2019"));
         vacante2.setSalario(12700.0);
         vacante2.setDestacado(0);
+        vacante2.setImagen("wrench1.png");
         //tercera oferta detrabajo 
         Vacante vacante3 =new Vacante();
         vacante3.setId(3);
@@ -67,6 +69,7 @@ public class ControladorInicio {
         vacante3.setFecha(sdf.parse("01-11-1847"));
         vacante3.setSalario(1000.0);
         vacante3.setDestacado(0);
+        
         
         listaVacantes.add(vacante1);
         listaVacantes.add(vacante2);

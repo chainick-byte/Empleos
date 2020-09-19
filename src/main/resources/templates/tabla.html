@@ -17,6 +17,7 @@ and open the template in the editor.
         <h1><p class="text-monospace text-primary">Lista de vacantes</p></h1>
         <table style="width: 100%" class="table table-striped table-hover">
             <tr>
+                <th>Logo</th>
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Descrpcion</th>
@@ -29,6 +30,12 @@ and open the template in the editor.
             pa elementos que se repite, es decir cada fila corresponde a cada id, por otro 
             lado a cada element de la fila hay que dar el contenido!!! -->
             <tr th:each="vacante :${vacantes}">
+                <td>
+                    <!--para sacar el nombre de la imagen , definimos una variable temporal 
+                    "images" y e las parentesis decimos a que igual es la variable ,
+                    que sera igual a vacante.imagen-->
+                    <img th:src="@{/img/{imges}(imges=${vacante.imagen})}" width="48" height="=48">
+                </td>
                 <td th:text="${vacante.id}"></td>
                 <td th:text="${vacante.nombre}"></td>
                 <td th:text="${vacante.descripcion}"></td>

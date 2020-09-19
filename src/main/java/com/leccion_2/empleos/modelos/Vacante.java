@@ -19,12 +19,21 @@ public class Vacante {
     private Date fecha;
     private Double salario;
     private int destacado;
+    private String imagen="no-image.png";
 
     
     // al tener todos los metodos de getter y setter de todas las variables , la clase Vacante
     //se convierte en una clase de tipo BEAN 
     //se autogenerea con BD "insert code"
     
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
