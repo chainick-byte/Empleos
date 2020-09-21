@@ -26,6 +26,7 @@ and open the template in the editor.
                 <th>Destacado</th>
                 <th>Destacado</th>
                 <th>Detalle</th>
+                <th>Borrar</th>
             </tr>
             <!-- repito pa superdotados como tu etiqueta th:each se utiliza para 
             pa elementos que se repite, es decir cada fila corresponde a cada id, por otro 
@@ -57,7 +58,11 @@ and open the template in the editor.
                 <td>
                     <!-- aqui lo que pasa es que relacionamos nuesta linkedlist con vista de path
                     variable por lo que ya tenemos enlace para vista detallada de la empresa-->
-                    <a th:href="@{/vacantes/view/{id}(id=${vacante.id})}" class="btn btn-success">ver detalle</a>
+                    <a th:href="@{/vacantes/view/{id}(id=${vacante.id})}" class="btn btn-primary">ver detalle</a>
+                </td>
+                <td>
+                    <a th:href="@{/vacantes/delete(id=${vacante.id})}" class="btn btn-danger">Borrar</a>
+
                 </td>
             </tr>
         </table>
