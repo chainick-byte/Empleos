@@ -5,10 +5,14 @@
  */
 package com.leccion_2.empleos.service;
 
+import com.leccion_2.empleos.modelos.Vacante;
+import java.util.List;
+
 /**
  *
  * @author igorr
  */
-public class IVacantesService {
+public interface IVacantesService {
+    List<Vacante>buscarTodas();
     
 }
