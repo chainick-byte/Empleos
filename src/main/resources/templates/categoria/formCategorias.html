@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -12,5 +12,15 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Formas de categorias</h1>
+
+        <form th:action="@{/categoria/save}" method="post">
+            Nombre:
+            <br>
+            <input type="text"  name="nombre" value=""><br>
+           Descripcion:
+            <br>
+            <input type="text"  name="descripcion" value=""><br><br>
+            <input type="submit" value="Guardar">
+        </form>
     </body>
 </html>
