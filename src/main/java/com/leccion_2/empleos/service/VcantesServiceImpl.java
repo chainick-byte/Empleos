@@ -83,4 +83,14 @@ public class VcantesServiceImpl implements IVacantesService {
         return listaVacantes;
     }
 
+    @Override
+    public Vacante buscarPorId(int id) {
+        for(Vacante v : listaVacantes){
+            if(v.getId()==id){
+                return v;
+            }
+        }
+        return null;
+    }
+
 }

@@ -15,4 +15,6 @@ import java.util.List;
 public interface IVacantesService {
     List<Vacante>buscarTodas();
     
+    Vacante buscarPorId(int id);
+    
 }
