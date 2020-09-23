@@ -55,7 +55,7 @@ public class VcantesServiceImpl implements IVacantesService {
             vacante3.setFecha(sdf.parse("01-11-1847"));
             vacante3.setSalario(1000.0);
             vacante3.setDestacado(0);
-            
+
             Vacante vacante4 = new Vacante();
             vacante4.setId(4);
             vacante4.setNombre("Diosito");
@@ -85,12 +85,18 @@ public class VcantesServiceImpl implements IVacantesService {
 
     @Override
     public Vacante buscarPorId(int id) {
-        for(Vacante v : listaVacantes){
-            if(v.getId()==id){
+        for (Vacante v : listaVacantes) {
+            if (v.getId() == id) {
                 return v;
             }
         }
         return null;
     }
+
+    @Override
+    public void guardar(Vacante vacante) {
+        listaVacantes.add(vacante);
+    }
+    
 
 }

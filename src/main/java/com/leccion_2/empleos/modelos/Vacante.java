@@ -22,6 +22,26 @@ public class Vacante {
     //al definir la variable imagen aqui , lo que sucedera es que al no tener imagenes se 
     //imprimira esa por defecto la que esta definida aqui
     private String imagen="nologo.png";
+    //Añado variables que me faltan los que estan en la vista para poder hacer data binding, genero setters y getters
+    //restantes y reescribo el metodo toString
+    private String estatus;
+    private String detalles;
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
 
     
     // al tener todos los metodos de getter y setter de todas las variables , la clase Vacante
@@ -83,12 +103,14 @@ public class Vacante {
     public int getDestacado() {
         return destacado;
     }
-    
 
     @Override
     public String toString() {
-        return "Vacante{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", salario=" + salario + '}';
+        return "Vacante{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", estatus=" + estatus + ", detalles=" + detalles + '}';
     }
+    
+
+  
     
     
     

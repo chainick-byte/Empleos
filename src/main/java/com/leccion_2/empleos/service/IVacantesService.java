@@ -17,4 +17,7 @@ public interface IVacantesService {
     
     Vacante buscarPorId(int id);
     
+    //una vez hemos arreglado data binding mejoro , el la funcionalidad 
+    void guardar(Vacante vacante);
+    
 }

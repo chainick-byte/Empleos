@@ -7,10 +7,15 @@ package com.leccion_2.empleos.controlador;
 
 import com.leccion_2.empleos.modelos.Vacante;
 import com.leccion_2.empleos.service.IVacantesService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,23 +37,35 @@ public class VacantesController {
     public String crear(){
         return "vacantes/formVacantes";
     }
+//      @PostMapping("/save")
+//    //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
+//    //tienen que coincidir con el nombre de atributos name del input
+//    public String guardar(@RequestParam("nombre") String nombre,@RequestParam("descripcion") String descripcion,
+//            @RequestParam("estatus") String estatus, @RequestParam("fecha") String fecha, @RequestParam("destacado")
+//            int destacado,@RequestParam("salario") double salario, @RequestParam("detalles") String detalles){
+//    //en caso de select pasamoe el valor numerico de cada opcion 
+//        System.out.println("Nombre: " + nombre);
+//        System.out.println("Descripcion: "+descripcion);
+//        System.out.println("Estatus" + estatus);
+//        System.out.println("Fecha de publicacion: " + fecha);
+//        System.out.println("Destacado: " + destacado);
+//        System.out.println("Salario ofrecido: "+ salario);
+//        System.out.println("Detalles: " + detalles);
+//        
+//        return "vacantes/listaVacantes";
+//    }
     
     @PostMapping("/save")
     //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
     //tienen que coincidir con el nombre de atributos name del input
-    public String guardar(@RequestParam("nombre") String nombre,@RequestParam("descripcion") String descripcion,
-            @RequestParam("estatus") String estatus, @RequestParam("fecha") String fecha, @RequestParam("destacado")
-            int destacado,@RequestParam("salario") double salario, @RequestParam("detalles") String detalles){
+    public String guardar(Vacante vacante){
+        vacanteService.guardar(vacante);
     //en caso de select pasamoe el valor numerico de cada opcion 
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Descripcion: "+descripcion);
-        System.out.println("Estatus" + estatus);
-        System.out.println("Fecha de publicacion: " + fecha);
-        System.out.println("Destacado: " + destacado);
-        System.out.println("Salario ofrecido: "+ salario);
-        System.out.println("Detalles: " + detalles);
+        System.out.println("Vacante: " + vacante);
+        
         
         return "vacantes/listaVacantes";
+        //funciona solo que no coincide el formato de Date
     }
 
     //es un ejemplo al reves de JPA , es decir buscamos un path de tipo /vacantes/view/numero que
@@ -67,6 +84,15 @@ public class VacantesController {
         System.out.println("borrando el parametro id: " + idVacante);
         model.addAttribute("idVacante", idVacante);
         return "mensaje";
+    }
+    //anotacion init binder permite configurar metodos para el tipo de dato Date, de esta forma se crea 
+    //siguiente metodo , que basicamente dice el modificador de fecha de web , tiene que aceptar nuevo formato 
+    //(dd-MM-yyyy), el que hemos programado, no haga caso al formato que se recibe en la plantilla
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder){
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, false));
+        
     }
 
 }
