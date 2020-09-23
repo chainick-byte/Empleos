@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragment="navbar-menu">
+                <a class="navbar-brand" href="#">EmpleosApp</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu 2</a>
+                        </li>          
+                    </ul>  
+                    <a class="btn btn-primary" href="#">Ingresar</a>&nbsp;
+                    <a class="btn btn-primary" href="#">Registrarse</a>
+                </div>
+            </nav>
+    </body>
+</html>
