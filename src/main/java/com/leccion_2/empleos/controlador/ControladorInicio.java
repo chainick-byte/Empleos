@@ -23,32 +23,33 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorInicio {
+
     @Autowired
     //añado anotacion autowired con lo indico donde quiero inyectar el cacho codigo marcado
     //con la anotacion de Service
     private IVacantesService vacanteService;
-    
+
     @GetMapping("/tabla")
-    public String mostrarTabla(Model model){
-        List<Vacante> lista=vacanteService.buscarTodas();
+    public String mostrarTabla(Model model) {
+        List<Vacante> lista = vacanteService.buscarTodas();
         model.addAttribute("vacantes", lista);
         return "tabla";
     }
-    
+
     @GetMapping("/detalle")
-    public String mostrarDetalle(Model model){
-        Vacante vacante =new Vacante();
+    public String mostrarDetalle(Model model) {
+        Vacante vacante = new Vacante();
         vacante.setNombre("Ingeniero de comunicaciones");
         vacante.setDescripcion("Se necesita un ingeniero para dar soporte a intranet");
         vacante.setFecha(new Date());
-        vacante.setSalario(9700.0);  
+        vacante.setSalario(9700.0);
         model.addAttribute("vacante", vacante);
         return "detalle";
     }
-    
+
     @GetMapping("/listado")
-    public String mostrarLista(Model model){
-        List<String> lista= new LinkedList<String>();
+    public String mostrarLista(Model model) {
+        List<String> lista = new LinkedList<String>();
         lista.add("Ingeniero de sistemas");
         lista.add("Auxiliar de contabilidad");
         lista.add("Vendedor");
@@ -56,35 +57,12 @@ public class ControladorInicio {
         model.addAttribute("empleos", lista);
         return "listado";
     }
-    
+
     @GetMapping("/")
-    public String mostrarIndex(Model model ){
-        String nombre="auxiliar de contabilidad";
-        Date fechaPub=new Date();
-        double salario=9000.0;
-        boolean vigente =true;
-        
-        //al pasar al metodo el objeto de tipo model, 
-        //podemos agregar a este modelo cualquier tipo de dato
-        model.addAttribute("mensaje", "hola mundo mundial");
-        //funciona de siguiente modo addAttribute primer valor es el nombre de la variable
-        // el valor de la variable 
-        //OJO:variable puede ser string int lista u otro objecto que se necesita pasar 
-        model.addAttribute("fecha", new Date());
-        //de esta forma se demuestra que podemos pasar cualquier objet !!!
-        
-        
-        
-        model.addAttribute("nombre", nombre);
-        model.addAttribute("fechaPub", fechaPub);
-        model.addAttribute("salario", salario);
-        model.addAttribute("vigente", vigente);
+    public String mostrarIndex(Model model) {
+        List<Vacante> lista = vacanteService.buscarTodas();
+        model.addAttribute("vacantes", lista);
         return "index";
     }
-    
+
 }
- 
-
-
-
-
