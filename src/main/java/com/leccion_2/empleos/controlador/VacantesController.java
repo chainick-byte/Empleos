@@ -9,6 +9,7 @@ import com.leccion_2.empleos.modelos.Vacante;
 import com.leccion_2.empleos.service.IVacantesService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -31,12 +32,22 @@ public class VacantesController {
 
     @Autowired
     private IVacantesService vacanteService;
-    
+
     //simplemente renderiza el formulario
     @GetMapping("/create")
-    public String crear(){
+    public String crear() {
         return "vacantes/formVacantes";
     }
+
+    ///////////////////EJERCIOCIO NUMERO 1///////////////////
+    @GetMapping("/index")
+    public String mostrarIndex(Model model) {
+        List<Vacante> vacantes = vacanteService.buscarTodas();
+        model.addAttribute("vacantes", vacantes);
+        return "vacantes/listVacantes";
+    }
+//Forma alternativa y NO automatizada de hacer cosas
+
 //      @PostMapping("/save")
 //    //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
 //    //tienen que coincidir con el nombre de atributos name del input
@@ -54,16 +65,13 @@ public class VacantesController {
 //        
 //        return "vacantes/listaVacantes";
 //    }
-    
     @PostMapping("/save")
     //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
     //tienen que coincidir con el nombre de atributos name del input
-    public String guardar(Vacante vacante){
+    public String guardar(Vacante vacante) {
         vacanteService.guardar(vacante);
-    //en caso de select pasamoe el valor numerico de cada opcion 
+        //en caso de select pasamoe el valor numerico de cada opcion 
         System.out.println("Vacante: " + vacante);
-        
-        
         return "vacantes/listaVacantes";
         //funciona solo que no coincide el formato de Date
     }
@@ -85,14 +93,15 @@ public class VacantesController {
         model.addAttribute("idVacante", idVacante);
         return "mensaje";
     }
+
     //anotacion init binder permite configurar metodos para el tipo de dato Date, de esta forma se crea 
     //siguiente metodo , que basicamente dice el modificador de fecha de web , tiene que aceptar nuevo formato 
     //(dd-MM-yyyy), el que hemos programado, no haga caso al formato que se recibe en la plantilla
     @InitBinder
-    public void initBinder(WebDataBinder webDataBinder){
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+    public void initBinder(WebDataBinder webDataBinder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, false));
-        
+
     }
 
 }

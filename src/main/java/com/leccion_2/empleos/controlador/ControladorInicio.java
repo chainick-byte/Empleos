@@ -7,8 +7,6 @@ package com.leccion_2.empleos.controlador;
 
 import com.leccion_2.empleos.modelos.Vacante;
 import com.leccion_2.empleos.service.IVacantesService;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
