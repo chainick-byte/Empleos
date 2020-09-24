@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -68,10 +70,18 @@ public class VacantesController {
     @PostMapping("/save")
     //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
     //tienen que coincidir con el nombre de atributos name del input
-    public String guardar(Vacante vacante) {
+    public String guardar(Vacante vacante, BindingResult result) {
         vacanteService.guardar(vacante);
         //en caso de select pasamoe el valor numerico de cada opcion 
         System.out.println("Vacante: " + vacante);
+        //si result tiene errores los ve todos y imprimer en la pantalla todos los errors y nos muestra una
+        //una vista alternativa
+        if (result.hasErrors()) {
+            for (ObjectError error : result.getAllErrors()) {
+                System.out.println("El error courrio debido a: " + error.getDefaultMessage());
+            }
+            return "vacantes/formVacantes";
+        }
         return "vacantes/listaVacantes";
         //funciona solo que no coincide el formato de Date
     }
