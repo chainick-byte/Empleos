@@ -36,6 +36,7 @@ and open the template in the editor.
                 <div class="card-body">
                     <a class="btn btn-primary" th:href="@{/vacantes/create}" title="Crear nueva Oferta de Trabajo" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
                     <hr>
+                    <h5 th:if="${msg!=null}" class="alert alert-success" th:text="${msg}" role="alert"></h5>
                     <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
@@ -49,8 +50,8 @@ and open the template in the editor.
                         </thead>
                         <tbody>
                             <tr th:each="vacante :${vacantes}">
+                                <td></td>
                                 <td th:text="${vacante.nombre}"></td>
-                                <td th:text="${vacante.descripcion}"></td>                  
                                 <td th:text="${vacante.fecha}"></td>
                                 <td th:text="${vacante.estatus}"></td>
                                 <td>

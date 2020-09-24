@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -70,7 +71,7 @@ public class VacantesController {
     @PostMapping("/save")
     //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
     //tienen que coincidir con el nombre de atributos name del input
-    public String guardar(Vacante vacante, BindingResult result) {
+    public String guardar(Vacante vacante, BindingResult result,RedirectAttributes attributes) {
         vacanteService.guardar(vacante);
         //en caso de select pasamoe el valor numerico de cada opcion 
         System.out.println("Vacante: " + vacante);
@@ -82,7 +83,8 @@ public class VacantesController {
             }
             return "vacantes/formVacantes";
         }
-        return "vacantes/listaVacantes";
+        attributes.addFlashAttribute("msg", "Usuario inscrito");
+        return "redirect:/vacantes/index";
         //funciona solo que no coincide el formato de Date
     }
 
