@@ -31,7 +31,14 @@
                     <div class="card-body">
                         <!--ojo todos lo problemas con el post pasan por esta anotacion de thymeleaf
                         es decir th:action"@{/path}"-->
-                        <form th:action="@{/vacantes/save}" method="post">              
+                        <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}">
+                            <div th:if="${#fields.hasErrors('*')}"class="alert alert-danger" role="alert" >
+                                por favor corrija los siguientes errores:
+                                <ul>
+                                    <li th:each="err:${#fields.errors('*')}" th:text="${err}"/>
+                                </ul>
+
+                            </div>
                             <div class="row">
                                 <div class="col-md-3"> 
                                     <div class="form-group">
@@ -148,7 +155,7 @@
              toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify \n\
              | bullist numlist outdent indent | forecolor backcolor table code"
              });
-         
+             
              */
 
         </script>
