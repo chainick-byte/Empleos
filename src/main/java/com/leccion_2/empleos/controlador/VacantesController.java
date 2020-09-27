@@ -6,6 +6,7 @@
 package com.leccion_2.empleos.controlador;
 
 import com.leccion_2.empleos.modelos.Vacante;
+import com.leccion_2.empleos.service.ICategoriaService;
 import com.leccion_2.empleos.service.IVacantesService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,10 +36,14 @@ public class VacantesController {
 
     @Autowired
     private IVacantesService vacanteService;
+    
+    @Autowired
+    private ICategoriaService categoriaService;
 
     //simplemente renderiza el formulario
     @GetMapping("/create")
-    public String crear(Vacante vacante) {
+    public String crear(Vacante vacante, Model model ) {
+        model.addAttribute("categorias",categoriaService.buscarTodas());
         return "vacantes/formVacantes";
     }
 
