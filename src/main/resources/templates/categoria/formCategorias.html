@@ -24,7 +24,7 @@ and open the template in the editor.
     <body>
 
         <header th:insert="fragment/navbar.html::navbar-menu">
-           
+
         </header>
 
         <main role="main">     
@@ -34,7 +34,13 @@ and open the template in the editor.
                 <div class="card">
                     <h4 class="card-header"><strong>Datos de la categoría</strong></h4>              
                     <div class="card-body">
-                        <form th:action="@{/categoria/save}" method="post">              
+                        <form th:action="@{/categoria/save}" th:object="${categoria}" method="post"  > 
+                            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert" >
+                                Por favor corrija los siguientes errores:
+                                <ul>
+                                    <li th:each="err:${#fields.errors('*')}" th:text="${err}"/>
+                                </ul>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6"> 
                                     <div class="form-group">
@@ -61,7 +67,7 @@ and open the template in the editor.
         </main>
 
         <footer class="footer" th:insert="fragment/footer.html::footer1">
-           
+
         </footer>
 
         <!-- Bootstrap core JavaScript

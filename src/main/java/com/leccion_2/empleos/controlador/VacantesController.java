@@ -69,8 +69,6 @@ public class VacantesController {
 //        return "vacantes/listaVacantes";
 //    }
     @PostMapping("/save")
-    //aqui programamos el metodo por medio de anotacion @RequestParam, donde el nombre de las varaibales
-    //tienen que coincidir con el nombre de atributos name del input
     public String guardar(Vacante vacante, BindingResult result,RedirectAttributes attributes) {
         vacanteService.guardar(vacante);
         //en caso de select pasamoe el valor numerico de cada opcion 
