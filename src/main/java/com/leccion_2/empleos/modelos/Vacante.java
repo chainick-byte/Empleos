@@ -26,6 +26,15 @@ public class Vacante {
     //restantes y reescribo el metodo toString
     private String estatus;
     private String detalles;
+    private Categoria categoria;
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
     public void setEstatus(String estatus) {
         this.estatus = estatus;
@@ -106,8 +115,10 @@ public class Vacante {
 
     @Override
     public String toString() {
-        return "Vacante{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", estatus=" + estatus + ", detalles=" + detalles + '}';
+        return "Vacante{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", estatus=" + estatus + ", detalles=" + detalles + ", categoria=" + categoria + '}';
     }
+
+   
     
 
   

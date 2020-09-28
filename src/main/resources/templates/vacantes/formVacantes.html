@@ -57,8 +57,10 @@
                                 <div class="col-md-3"> 
                                     <div class="form-group">
                                         <label for="categoria">Categoría</label>
-                                        <select class="form-control" name="categoria" id="categoria">
-                                            <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}">Ventas</option>
+                                        <select class="form-control" th:field="*{categoria.id}">
+                                            <option th:each="categoria : ${categorias}" 
+                                                    th:value="${categoria.id}" 
+                                                    th:text="${categoria.nombre}">Ventas</option>
                                             
                                         </select>
                                     </div>
