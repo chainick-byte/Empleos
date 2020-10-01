@@ -8,6 +8,7 @@ package com.leccion_2.empleos.controlador;
 import com.leccion_2.empleos.modelos.Vacante;
 import com.leccion_2.empleos.service.ICategoriaService;
 import com.leccion_2.empleos.service.IVacantesService;
+import com.leccion_2.empleos.util.Utiles;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -36,14 +38,14 @@ public class VacantesController {
 
     @Autowired
     private IVacantesService vacanteService;
-    
+
     @Autowired
     private ICategoriaService categoriaService;
 
     //simplemente renderiza el formulario
     @GetMapping("/create")
-    public String crear(Vacante vacante, Model model ) {
-        model.addAttribute("categorias",categoriaService.buscarTodas());
+    public String crear(Vacante vacante, Model model) {
+        model.addAttribute("categorias", categoriaService.buscarTodas());
         return "vacantes/formVacantes";
     }
 
@@ -74,7 +76,9 @@ public class VacantesController {
 //        return "vacantes/listaVacantes";
 //    }
     @PostMapping("/save")
-    public String guardar(Vacante vacante, BindingResult result,RedirectAttributes attributes) {
+    public String guardar(Vacante vacante, BindingResult result, RedirectAttributes attributes,
+        @RequestParam("archivoImagen") MultipartFile multiPart) {
+        
         vacanteService.guardar(vacante);
         //en caso de select pasamoe el valor numerico de cada opcion 
         System.out.println("Vacante: " + vacante);
@@ -85,6 +89,13 @@ public class VacantesController {
                 System.out.println("El error courrio debido a: " + error.getDefaultMessage());
             }
             return "vacantes/formVacantes";
+        }
+        if(!multiPart.isEmpty()){
+            String ruta="C:/empleos/img-vacantes/";
+            String nombreImagen=Utiles.guardarArchivo(multiPart,ruta);
+            if(nombreImagen.equals("NoName")){
+                vacante.setImagen(nombreImagen);
+            }
         }
         attributes.addFlashAttribute("msg", "Usuario inscrito");
         return "redirect:/vacantes/index";

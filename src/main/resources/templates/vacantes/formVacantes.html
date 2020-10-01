@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <!--ojo todos lo problemas con el post pasan por esta anotacion de thymeleaf
                         es decir th:action"@{/path}"-->
-                        <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}">
+                        <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}" enctype="multipart/form-data">
                             <div th:if="${#fields.hasErrors('*')}"class="alert alert-danger" role="alert" >
                                 por favor corrija los siguientes errores:
                                 <ul>
