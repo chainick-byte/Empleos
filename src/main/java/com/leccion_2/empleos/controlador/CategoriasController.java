@@ -6,7 +6,7 @@
 package com.leccion_2.empleos.controlador;
 
 import com.leccion_2.empleos.modelos.Categoria;
-import com.leccion_2.empleos.service.CategoriaServiceImpl;
+import com.leccion_2.empleos.service.ICategoriaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CategoriasController {
     @Autowired
     
-    private CategoriaServiceImpl categoriaController;
+    private ICategoriaService categoriaController;
     
     //@GetMapping("/home")
     @RequestMapping(value="/home", method=RequestMethod.GET)

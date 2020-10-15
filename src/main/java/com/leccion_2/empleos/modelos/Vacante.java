@@ -6,13 +6,26 @@
 package com.leccion_2.empleos.modelos;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author igorr
  */
+@Entity
+@Table(name="vacantes")
 public class Vacante {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
     private String nombre;
     private String descripcion;
@@ -26,6 +39,8 @@ public class Vacante {
     //restantes y reescribo el metodo toString
     private String estatus;
     private String detalles;
+    @OneToOne
+    @JoinColumn(name = "idcategoria")
     private Categoria categoria;
 
     public void setCategoria(Categoria categoria) {

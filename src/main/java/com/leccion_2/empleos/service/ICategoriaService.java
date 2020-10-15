@@ -19,3 +19,4 @@ public interface ICategoriaService  {
     Categoria buscarPorId(int idCategoria);
     
 }
+ 

@@ -19,7 +19,7 @@ public class Utiles {
         try {
             //Aqui se forma el nombre de archivo que queremos guardar
             File imagenFile = new File(ruta + nombreFinal);
-            System.out.println("Archivo" + imagenFile.getAbsolutePath());
+            System.out.println("Archivo====================>" + imagenFile.getAbsolutePath());
             //guardar fiscamente el archivo
             multiPart.transferTo(imagenFile);
             return nombreFinal;

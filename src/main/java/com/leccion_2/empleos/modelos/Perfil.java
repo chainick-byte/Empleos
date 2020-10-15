@@ -5,7 +5,6 @@
  */
 package com.leccion_2.empleos.modelos;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,43 +16,33 @@ import javax.persistence.Table;
  * @author igorr
  */
 @Entity
-@Table(name="categorias")
-public class Categoria {
+@Table(name="perfiles")
+public class Perfil {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Integer id;
-    private String nombre;
-    private String descripcion;
+    private String perfil;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
+    public String getPerfil() {
+        return perfil;
     }
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return "Perfil{" + "id=" + id + ", perfil=" + perfil + '}';
     }
     
     

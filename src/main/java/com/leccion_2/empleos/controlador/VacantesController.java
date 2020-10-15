@@ -93,7 +93,7 @@ public class VacantesController {
         if(!multiPart.isEmpty()){
             String ruta="C:/empleos/img-vacantes/";
             String nombreImagen=Utiles.guardarArchivo(multiPart,ruta);
-            if(nombreImagen.equals("NoName")){
+            if(nombreImagen!=null){
                 vacante.setImagen(nombreImagen);
             }
         }
@@ -113,11 +113,11 @@ public class VacantesController {
     }
 
     //Ejemplo RequestParam de tipo get
-    @GetMapping("/delete")
-    public String eliminar(@RequestParam("id") int idVacante, Model model) {
+    @GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") int idVacante, Model model) {
+        vacanteService.eliminr(idVacante);
         System.out.println("borrando el parametro id: " + idVacante);
-        model.addAttribute("idVacante", idVacante);
-        return "mensaje";
+        return "redirect:/vacantes/index";
     }
 
     //anotacion init binder permite configurar metodos para el tipo de dato Date, de esta forma se crea 

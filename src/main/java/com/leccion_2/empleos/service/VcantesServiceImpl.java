@@ -97,6 +97,16 @@ public class VcantesServiceImpl implements IVacantesService {
     public void guardar(Vacante vacante) {
         listaVacantes.add(vacante);
     }
+
+    @Override
+    public List<Vacante> buscaraDestacadas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminr(Integer idVacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
 }

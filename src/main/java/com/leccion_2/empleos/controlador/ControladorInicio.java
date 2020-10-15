@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  *
@@ -58,9 +59,11 @@ public class ControladorInicio {
 
     @GetMapping("/")
     public String mostrarIndex(Model model) {
-        List<Vacante> lista = vacanteService.buscarTodas();
+        List<Vacante> lista = vacanteService.buscaraDestacadas();
         model.addAttribute("vacantes", lista);
         return "index";
     }
+    
+   
 
 }

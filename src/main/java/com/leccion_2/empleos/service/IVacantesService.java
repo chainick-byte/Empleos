@@ -19,5 +19,7 @@ public interface IVacantesService {
     
     //una vez hemos arreglado data binding mejoro , el la funcionalidad 
     void guardar(Vacante vacante);
+    List<Vacante>buscaraDestacadas();
+    void eliminr(Integer idVacante);
     
 }
